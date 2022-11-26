@@ -1,46 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="num1:" />
-
-    <EditText
-        android:id="@+id/num1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="num2:" />
-
-    <EditText
-        android:id="@+id/num2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
-
     <Button
-        android:id="@+id/sumButton"
-        android:layout_width="match_parent"
+        android:id="@+id/search_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sum" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Get"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/result"
+    <EditText
+        android:id="@+id/country_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Country Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/status_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_name_edit_text">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/status_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Введите запрос"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progress_spinner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/status_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_baseline_manage_search_24" />
+
+        <ImageView
+            android:id="@+id/status_imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toTopOf="@+id/status_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_baseline_manage_search_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_name_edit_text">
+
+
+        <ImageView
+            android:id="@+id/country_flag_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/black_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/country_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Страна"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_flag_image" />
+
+        <TextView
+            android:id="@+id/country_capital_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Столица:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_name_textView"
+            app:layout_constraintTop_toBottomOf="@+id/country_name_textView" />
+
+        <TextView
+            android:id="@+id/country_language_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Язык:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_area_textView"
+            app:layout_constraintTop_toBottomOf="@+id/country_area_textView" />
+
+        <TextView
+            android:id="@+id/country_population_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Население:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_capital_textView"
+            app:layout_constraintTop_toBottomOf="@+id/country_capital_textView" />
+
+        <TextView
+            android:id="@+id/country_area_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Площадь"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_population_textView"
+            app:layout_constraintTop_toBottomOf="@+id/country_population_textView" />
+
+        <TextView
+            android:id="@+id/country_capital_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/country_capital_textView"
+            app:layout_constraintTop_toTopOf="@+id/country_capital_textView" />
+
+        <TextView
+            android:id="@+id/country_population_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/country_population_textView"
+            app:layout_constraintTop_toTopOf="@+id/country_population_textView" />
+
+        <TextView
+            android:id="@+id/country_area_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/country_population_info"
+            app:layout_constraintTop_toTopOf="@+id/country_area_textView" />
+
+        <TextView
+            android:id="@+id/country_language_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/country_population_info"
+            app:layout_constraintTop_toTopOf="@+id/country_language_textView" />
+
+        <TextView
+            android:id="@+id/country_currency_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Валюта:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_language_textView"
+            app:layout_constraintTop_toBottomOf="@+id/country_language_textView" />
+
+        <TextView
+            android:id="@+id/country_currency_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/country_language_info"
+            app:layout_constraintTop_toTopOf="@+id/country_currency_textView" />
+
+        <TextView
+            android:id="@+id/country_currency_simbol_info2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/country_currency_info"
+            app:layout_constraintTop_toBottomOf="@+id/country_currency_info" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
