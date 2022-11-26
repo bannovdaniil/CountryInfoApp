@@ -2,10 +2,12 @@
 
 Приложение на Kotlin под android
 
-![](https://raw.githubusercontent.com/bannovdaniil/FirstAndroidApp/image/1.png)
-![](https://raw.githubusercontent.com/bannovdaniil/FirstAndroidApp/image/2.png)
-![](https://raw.githubusercontent.com/bannovdaniil/FirstAndroidApp/image/3.png)
-![](https://raw.githubusercontent.com/bannovdaniil/FirstAndroidApp/image/4.png)
+<p float="left">
+<img src="https://github.com/bannovdaniil/FirstAndroidApp/raw/master/image/1.png" width="200">
+<img src="https://github.com/bannovdaniil/FirstAndroidApp/raw/master/image/4.png" width="200">
+<img src="https://github.com/bannovdaniil/FirstAndroidApp/raw/master/image/2.png" width="200">
+<img src="https://github.com/bannovdaniil/FirstAndroidApp/raw/master/image/3.png" width="200">
+</p>
 
 2022-11-26 Поиск страны по названию, и отображение о ней информации
 
